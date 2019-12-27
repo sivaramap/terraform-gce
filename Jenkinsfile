@@ -4,11 +4,10 @@ pipeline {
     stages {
         stage ('checkout'){
             steps {
-                git branch: 'master', url: 'https://github.com/sivaramap/terraform-gce.git'
+                git branch: 'master', url:'https://github.com/sivaramap/terraform-gce.git'
             }
         }
       
-
 		stage('Set Terraform path') {
             steps {
                 script {
@@ -16,9 +15,7 @@ pipeline {
                     env.PATH = "${tfHome}:${env.PATH}"
                 }
                 sh 'terraform --version'
-               
-               
-            }
+          }
         }
         
          stage('Provision infrastructure') {
@@ -28,13 +25,9 @@ pipeline {
                 sh 'terraform init'
                 sh 'terraform plan'
                 sh 'terraform apply -auto-approve'
-                             
-             
-            }
+             }
         }
         }
-        
-      
-      
+       
     }
 }
