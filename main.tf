@@ -5,7 +5,7 @@ provider "google" {
 }
 
 # Create a Google Compute instance
-resource "google_compute_instance" "example" {
+resource "google_compute_instance" "terraform-gce" {
   name          = "success"
   machine_type  = "f1-micro"
   zone          = "us-east1-b"
